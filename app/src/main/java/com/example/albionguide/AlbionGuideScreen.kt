@@ -38,6 +38,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.example.albionguide.ui.screens.CategoryScreen
 import com.example.albionguide.ui.screens.StartScreen
 
 // TODO: Screen enum
@@ -138,8 +139,16 @@ fun AlbionGuideApp(
                         type = NavType.IntType
                     }
                 )
-            ) {
-                // TODO: Category screen
+            ) { backStackEntry ->
+                val categoryIndex = backStackEntry.arguments?.getInt("categoryIndex") ?: 0
+                CategoryScreen(
+                    categoryIndex = categoryIndex,
+                    onSubcategoryClicked = { subcategoryIndex ->
+                        navController.navigate(
+                            "Activity/$categoryIndex/$subcategoryIndex"
+                        )
+                    }
+                )
             }
 
             composable(
