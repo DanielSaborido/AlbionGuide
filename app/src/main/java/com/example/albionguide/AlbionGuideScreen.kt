@@ -16,12 +16,10 @@
 package com.example.albionguide
 
 import androidx.annotation.StringRes
-import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -30,38 +28,40 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.example.albionguide.datasource.DataSource
-import com.example.albionguide.ui.AccompanimentMenuScreen
-import com.example.albionguide.ui.CheckoutScreen
-import com.example.albionguide.ui.EntreeMenuScreen
-import com.example.albionguide.ui.OrderViewModel
-import com.example.albionguide.ui.SideDishMenuScreen
-import com.example.albionguide.ui.StartOrderScreen
-import com.example.albionguide.R
+import androidx.navigation.navArgument
 
 // TODO: Screen enum
-enum class AlbionGuideScreen (@StringRes val title: Int){
-    Start (title = R.string.app_name),
-    Entree (title = R.string.choose_entree),
-    Side (title = R.string.choose_side_dish),
-    Accompaniment (title = R.string.choose_accompaniment),
-    Summary (title = R.string.order_summary)
+enum class AlbionGuideScreen(
+    val route: String,
+    @StringRes val title: Int
+) {
+    Start(
+        route = "Start",
+        title = R.string.app_name
+    ),
+    Category(
+        route = "Category/{categoryIndex}",
+        title = R.string.categories_title
+    ),
+    Activity(
+        route = "Activity/{categoryIndex}/{subcategoryIndex}",
+        title = R.string.activity_description
+    )
 }
+
 // TODO: AppBar
 /**
- * Composable that displays the topBar and displays back button if back navigation is possible.
+ * Composable that displays the topBar and displays
+ * back button if back navigation is possible.
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -72,7 +72,9 @@ fun AlbionGuideAppBar(
     modifier: Modifier = Modifier
 ) {
     TopAppBar(
-        title = { Text(stringResource(id = currentScreen.title)) },
+        title = {
+            Text(stringResource(id = currentScreen.title))
+        },
         colors = TopAppBarDefaults.mediumTopAppBarColors(
             containerColor = MaterialTheme.colorScheme.primaryContainer
         ),
@@ -82,7 +84,7 @@ fun AlbionGuideAppBar(
                 IconButton(onClick = navigateUp) {
                     Icon(
                         imageVector = Icons.Filled.ArrowBack,
-                        contentDescription = stringResource(R.string.back_button)
+                        contentDescription = stringResource(R.string.navigation_back)
                     )
                 }
             }
@@ -93,90 +95,61 @@ fun AlbionGuideAppBar(
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AlbionGuideApp(
-    viewModel: OrderViewModel = viewModel(),
     navController: NavHostController = rememberNavController()
 ) {
     // TODO: Create Controller and initialization
     val backStackEntry by navController.currentBackStackEntryAsState()
-    val currentScreen = AlbionGuideScreen.valueOf(
-        backStackEntry?.destination?.route ?: AlbionGuideScreen.Start.name
-    )
-    // Create ViewModel
-    val viewModel: OrderViewModel = viewModel()
-
+    val currentRoute = backStackEntry?.destination?.route
+    val currentScreen = AlbionGuideScreen.entries.firstOrNull {
+        it.route == currentRoute
+    } ?: AlbionGuideScreen.Start
     Scaffold(
         topBar = {
             AlbionGuideAppBar(
                 currentScreen = currentScreen,
                 canNavigateBack = navController.previousBackStackEntry != null,
-                navigateUp = { navController.navigateUp() }
+                navigateUp = {
+                    navController.navigateUp()
+                }
             )
         }
     ) { innerPadding ->
-        val uiState by viewModel.uiState.collectAsState()
         // TODO: Navigation host
         NavHost(
             navController = navController,
-            startDestination = AlbionGuideScreen.Start.name,
+            startDestination = AlbionGuideScreen.Start.route,
             modifier = Modifier.padding(innerPadding)
-        ){
-            composable(route = AlbionGuideScreen.Start.name) {
-                StartOrderScreen(
-                    onStartOrderButtonClicked = {
-                        navController.navigate(AlbionGuideScreen.Entree.name)
+        ) {
+            composable(
+                route = AlbionGuideScreen.Start.route
+            ) {
+                // TODO: Main screen
+            }
+
+            composable(
+                route = AlbionGuideScreen.Category.route,
+                arguments = listOf(
+                    navArgument("categoryIndex") {
+                        type = NavType.IntType
+                    }
+                )
+            ) {
+                // TODO: Category screen
+            }
+
+            composable(
+                route = AlbionGuideScreen.Activity.route,
+                arguments = listOf(
+                    navArgument("categoryIndex") {
+                        type = NavType.IntType
                     },
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .padding(dimensionResource(R.dimen.padding_medium))
+                    navArgument("subcategoryIndex") {
+                        type = NavType.IntType
+                    }
                 )
-            }
-            composable(route = AlbionGuideScreen.Entree.name) {
-                val context = LocalContext.current
-                EntreeMenuScreen(
-                    options = DataSource.entreeMenuItems,
-                    onSelectionChanged = {viewModel.updateEntree(it)},
-                    onCancelButtonClicked = {cancelOrderAndNavigateToStart(viewModel, navController)},
-                    onNextButtonClicked = {navController.navigate(AlbionGuideScreen.Side.name)},
-                    modifier = Modifier.fillMaxHeight()
-                )
-            }
-            composable(route = AlbionGuideScreen.Side.name) {
-                val context = LocalContext.current
-                SideDishMenuScreen(
-                    options = DataSource.sideDishMenuItems,
-                    onSelectionChanged = {viewModel.updateSideDish(it)},
-                    onCancelButtonClicked = {cancelOrderAndNavigateToStart(viewModel, navController)},
-                    onNextButtonClicked = {navController.navigate(AlbionGuideScreen.Accompaniment.name)},
-                    modifier = Modifier.fillMaxHeight()
-                )
-            }
-            composable(route = AlbionGuideScreen.Accompaniment.name) {
-                val context = LocalContext.current
-                AccompanimentMenuScreen(
-                    options = DataSource.accompanimentMenuItems,
-                    onSelectionChanged = {viewModel.updateAccompaniment(it)},
-                    onCancelButtonClicked = {cancelOrderAndNavigateToStart(viewModel, navController)},
-                    onNextButtonClicked = {navController.navigate(AlbionGuideScreen.Summary.name)},
-                    modifier = Modifier.fillMaxHeight()
-                )
-            }
-            composable(route = AlbionGuideScreen.Summary.name) {
-                val context = LocalContext.current
-                CheckoutScreen(
-                    orderUiState = uiState,
-                    onCancelButtonClicked = {cancelOrderAndNavigateToStart(viewModel, navController)},
-                    onNextButtonClicked = {navController.navigate(AlbionGuideScreen.Start.name)},
-                    modifier = Modifier.fillMaxHeight()
-                )
+            ) {
+                // TODO: Activity screen
             }
         }
     }
-}
-
-private fun cancelOrderAndNavigateToStart (
-    viewModel: OrderViewModel,
-    navController: NavHostController
-){
-    viewModel.resetOrder()
-    navController.popBackStack(AlbionGuideScreen.Start.name, false)
 }
