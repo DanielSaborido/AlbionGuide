@@ -38,6 +38,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.example.albionguide.ui.screens.ActivityScreen
 import com.example.albionguide.ui.screens.CategoryScreen
 import com.example.albionguide.ui.screens.StartScreen
 
@@ -161,8 +162,15 @@ fun AlbionGuideApp(
                         type = NavType.IntType
                     }
                 )
-            ) {
-                // TODO: Activity screen
+            ) { backStackEntry ->
+                val categoryIndex =
+                    backStackEntry.arguments?.getInt("categoryIndex") ?: 0
+                val subcategoryIndex =
+                    backStackEntry.arguments?.getInt("subcategoryIndex") ?: 0
+                ActivityScreen(
+                    categoryIndex = categoryIndex,
+                    subcategoryIndex = subcategoryIndex
+                )
             }
         }
     }
