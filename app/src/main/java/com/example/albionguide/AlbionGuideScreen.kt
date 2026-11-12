@@ -38,6 +38,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.example.albionguide.ui.screens.StartScreen
 
 // TODO: Screen enum
 enum class AlbionGuideScreen(
@@ -123,7 +124,11 @@ fun AlbionGuideApp(
             composable(
                 route = AlbionGuideScreen.Start.route
             ) {
-                // TODO: Main screen
+                StartScreen(
+                    onCategoryClicked = { categoryIndex ->
+                        navController.navigate("Category/$categoryIndex")
+                    }
+                )
             }
 
             composable(
