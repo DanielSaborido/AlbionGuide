@@ -1,16 +1,130 @@
 <resources>
+    <!-- APP -->
     <string name="app_name">Albion Guide</string>
-    <string name="back_button">Back</string>
-    <string name="cancel">Cancel</string>
-    <string name="choose_accompaniment">Choose Accompaniment</string>
-    <string name="choose_entree">Choose Entree</string>
-    <string name="choose_side_dish">Choose Side Dish</string>
-    <string name="next">Next</string>
-    <string name="order_checkout">Order Checkout</string>
-    <string name="start_order">Start Order</string>
-    <string name="order_summary">Order Summary</string>
-    <string name="subtotal">Subtotal: %s</string>
-    <string name="tax">Tax: %s</string>
-    <string name="total">Total: %s</string>
-    <string name="submit">Submit</string>
+    <string name="app_description">Your guide to the world of Albion Online</string>
+
+    <!-- MAIN SCREEN -->
+    <string name="home_title">Albion Online Guide</string>
+    <string name="home_subtitle">Explore activities, learn new strategies and discover everything Albion has to offer.</string>
+    <string name="categories_title">Main Categories</string>
+
+    <!-- CATEGORY 1: GATHERING -->
+    <string name="category_gathering">Gathering</string>
+    <string name="category_gathering_desc">Discover how to collect resources, improve your gathering skills and make silver through the world of Albion.</string>
+
+    <string name="gathering_basics">Gathering Basics</string>
+    <string name="gathering_basics_desc">Learn how gathering works, how to use tools and how to collect resources efficiently.</string>
+    <string name="gathering_tips">Gathering Tips</string>
+    <string name="gathering_tips_desc">Learn how to choose gathering zones, manage your inventory and avoid unnecessary risks.</string>
+    <string name="gathering_specialization">Gathering Specialization</string>
+    <string name="gathering_specialization_desc">Understand gathering fame, progression and specialization for each resource.</string>
+    <string name="gathering_danger_zones">Danger Zones</string>
+    <string name="gathering_danger_zones_desc">Understand the risks of gathering in blue, yellow, red and black zones.</string>
+
+    <!-- CATEGORY 2: CRAFTING AND REFINING -->
+    <string name="category_crafting">Crafting &amp; Refining</string>
+    <string name="category_crafting_desc">Learn how to transform raw resources into materials, equipment and valuable items.</string>
+
+    <string name="crafting_basics">Crafting Basics</string>
+    <string name="crafting_basics_desc">Learn how crafting stations work and how to create weapons, armor and other items.</string>
+    <string name="crafting_refining">Resource Refining</string>
+    <string name="crafting_refining_desc">Discover how to refine raw resources into usable materials.</string>
+    <string name="crafting_focus">Focus Points</string>
+    <string name="crafting_focus_desc">Understand how to use focus points to improve your crafting and refining profits.</string>
+    <string name="crafting_specialization">Crafting Specialization</string>
+    <string name="crafting_specialization_desc">Learn how crafting fame and specialization improve your production.</string>
+
+    <!-- CATEGORY 3: PVE AND MOBS -->
+    <string name="category_pve">PvE &amp; Mobs</string>
+    <string name="category_pve_desc">Explore combat against creatures, dungeons, bosses and other PvE challenges.</string>
+
+    <string name="pve_open_world">Open World Mobs</string>
+    <string name="pve_open_world_desc">Learn how to fight open-world creatures and earn fame, loot and silver.</string>
+    <string name="pve_solo_dungeons">Solo Dungeons</string>
+    <string name="pve_solo_dungeons_desc">Discover how to complete solo dungeons, defeat bosses and improve your PvE efficiency.</string>
+    <string name="pve_group_dungeons">Group Dungeons</string>
+    <string name="pve_group_dungeons_desc">Learn about group dungeon roles, team composition and cooperation.</string>
+    <string name="pve_avalonian">Avalonian Content</string>
+    <string name="pve_avalonian_desc">Explore challenging Avalonian activities and learn about their rewards.</string>
+    <string name="pve_hellgates">Hellgates</string>
+    <string name="pve_hellgates_desc">Understand Hellgate mechanics, team composition and combat strategies.</string>
+
+    <!-- CATEGORY 4: SOLO PVP -->
+    <string name="category_solo_pvp">Solo PvP</string>
+    <string name="category_solo_pvp_desc">Learn how to fight other players alone and improve your individual combat skills.</string>
+
+    <string name="solo_pvp_open_world">Open World PvP</string>
+    <string name="solo_pvp_open_world_desc">Learn how to find fights, engage enemies and survive encounters in dangerous zones.</string>
+    <string name="solo_pvp_corrupted">Corrupted Dungeons</string>
+    <string name="solo_pvp_corrupted_desc">Discover how to fight in corrupted dungeons and improve your one-versus-one skills.</string>
+    <string name="solo_pvp_builds">Solo PvP Builds</string>
+    <string name="solo_pvp_builds_desc">Explore weapon combinations, armor choices and abilities for solo combat.</string>
+    <string name="solo_pvp_tips">Solo PvP Tips</string>
+    <string name="solo_pvp_tips_desc">Learn about positioning, cooldown management, matchups and decision-making.</string>
+
+    <!-- CATEGORY 5: GROUP PVP -->
+    <string name="category_group_pvp">Group PvP</string>
+    <string name="category_group_pvp_desc">Discover group combat, team coordination and small-scale PvP activities.</string>
+
+    <string name="group_pvp_small_scale">Small Scale PvP</string>
+    <string name="group_pvp_small_scale_desc">Learn how small groups fight, coordinate abilities and control engagements.</string>
+    <string name="group_pvp_ganking">Ganking</string>
+    <string name="group_pvp_ganking_desc">Understand how groups hunt players, organize ambushes and control escape routes.</string>
+    <string name="group_pvp_hellgates">Group Hellgates</string>
+    <string name="group_pvp_hellgates_desc">Learn how to coordinate a team and compete in group Hellgates.</string>
+    <string name="group_pvp_builds">Group PvP Builds</string>
+    <string name="group_pvp_builds_desc">Discover common group roles, builds and equipment combinations.</string>
+
+    <!-- CATEGORY 6: CAMPS AND OUTPOSTS -->
+    <string name="category_camps">Camps &amp; Outposts</string>
+    <string name="category_camps_desc">Learn about open-world objectives, camps, outposts and their rewards.</string>
+
+    <string name="camps_open_world">Open World Camps</string>
+    <string name="camps_open_world_desc">Discover camps, their enemies, rewards and strategies for completing them.</string>
+    <string name="camps_outposts">Outposts</string>
+    <string name="camps_outposts_desc">Learn how to capture and defend outposts while competing against other players.</string>
+    <string name="camps_objectives">World Objectives</string>
+    <string name="camps_objectives_desc">Understand different open-world objectives and how to participate in them.</string>
+
+    <!-- CATEGORY 7: WARS AND TERRITORY -->
+    <string name="category_wars">Wars &amp; Territory</string>
+    <string name="category_wars_desc">Explore large-scale PvP, guild activities, territory control and faction warfare.</string>
+
+    <string name="wars_guild">Guild Warfare</string>
+    <string name="wars_guild_desc">Learn about guild organization, combat preparation and large-scale battles.</string>
+    <string name="wars_territories">Territory Control</string>
+    <string name="wars_territories_desc">Understand how guilds compete for territories and control valuable locations.</string>
+    <string name="wars_castles">Castles &amp; Castle Outposts</string>
+    <string name="wars_castles_desc">Discover castle objectives, their rewards and strategies for capturing them.</string>
+    <string name="wars_faction">Faction Warfare</string>
+    <string name="wars_faction_desc">Learn how to join a faction, capture zones and participate in faction battles.</string>
+    <string name="wars_crystal">Crystal League</string>
+    <string name="wars_crystal_desc">Understand organized competitive team battles and their mechanics.</string>
+
+    <!-- CATEGORY 8: ECONOMY AND TRADING -->
+    <string name="category_economy">Economy &amp; Trading</string>
+    <string name="category_economy_desc">Learn how to make silver, trade items and manage your resources.</string>
+
+    <string name="economy_market">Marketplace</string>
+    <string name="economy_market_desc">Learn how to buy and sell items, understand market prices and find profitable opportunities.</string>
+    <string name="economy_transport">Transporting</string>
+    <string name="economy_transport_desc">Discover how to move goods between cities while managing the risks of transporting.</string>
+    <string name="economy_islands">Personal Islands</string>
+    <string name="economy_islands_desc">Learn about island management, farming, laborers and passive income opportunities.</string>
+    <string name="economy_silver">Making Silver</string>
+    <string name="economy_silver_desc">Explore different methods of earning silver through PvE, PvP, gathering and trading.</string>
+
+    <!-- ACTIVITY DETAILS -->
+    <string name="activity_description">Description</string>
+    <string name="activity_how_it_works">How It Works</string>
+    <string name="activity_requirements">Requirements</string>
+    <string name="activity_tips">Tips &amp; Tricks</string>
+    <string name="activity_rewards">Rewards</string>
+    <string name="activity_difficulty">Difficulty</string>
+    <string name="activity_recommended_build">Recommended Build</string>
+
+    <!-- NAVIGATION -->
+    <string name="navigation_home">Home</string>
+    <string name="navigation_back">Back</string>
+    <string name="navigation_search">Search</string>
 </resources>
