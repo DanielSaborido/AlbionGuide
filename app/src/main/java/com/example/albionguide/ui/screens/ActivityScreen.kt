@@ -16,9 +16,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.albionguide.R
 import com.example.albionguide.datasource.DataSource
+import com.example.albionguide.ui.theme.AlbionFont
 
 @Composable
 fun ActivityScreen(
@@ -50,7 +52,10 @@ fun ActivityScreen(
         ) {
             Text(
                 text = stringResource(activity.name),
-                style = MaterialTheme.typography.headlineMedium
+                style = MaterialTheme.typography.headlineMedium.copy(
+                    fontFamily = AlbionFont,
+                    fontWeight = FontWeight.Bold
+                ),
             )
             DetailCard(
                 title = stringResource(R.string.activity_description),
@@ -92,13 +97,19 @@ private fun DetailCard(
         ) {
             Text(
                 text = title,
-                style = MaterialTheme.typography.titleMedium,
+                style = MaterialTheme.typography.titleMedium.copy(
+                    fontFamily = AlbionFont,
+                    fontWeight = FontWeight.Bold
+                ),
                 color = MaterialTheme.colorScheme.onSurface
             )
             Spacer(modifier = Modifier.height(6.dp))
             Text(
                 text = content,
-                style = MaterialTheme.typography.bodyMedium,
+                style = MaterialTheme.typography.bodyMedium.copy(
+                    fontFamily = AlbionFont,
+                    fontWeight = FontWeight.Normal
+                ),
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
         }

@@ -16,8 +16,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.albionguide.datasource.DataSource
+import com.example.albionguide.ui.theme.AlbionFont
 
 @Composable
 fun StartScreen(
@@ -31,7 +33,10 @@ fun StartScreen(
     ) {
         Text(
             text = "Explore Albion Online",
-            style = MaterialTheme.typography.headlineMedium,
+            style = MaterialTheme.typography.headlineMedium.copy(
+                fontFamily = AlbionFont,
+                fontWeight = FontWeight.Bold
+            ),
             modifier = Modifier.padding(
                 top = 20.dp,
                 bottom = 8.dp
@@ -39,7 +44,10 @@ fun StartScreen(
         )
         Text(
             text = "Choose an activity to discover everything Albion has to offer.",
-            style = MaterialTheme.typography.bodyMedium,
+            style = MaterialTheme.typography.bodyMedium.copy(
+                fontFamily = AlbionFont,
+                fontWeight = FontWeight.Normal
+            ),
             color = MaterialTheme.colorScheme.onSurfaceVariant,
             modifier = Modifier.padding(bottom = 16.dp)
         )
@@ -67,12 +75,18 @@ fun StartScreen(
                     ) {
                         Text(
                             text = stringResource(category.name),
-                            style = MaterialTheme.typography.titleLarge,
+                            style = MaterialTheme.typography.titleLarge.copy(
+                                fontFamily = AlbionFont,
+                                fontWeight = FontWeight.Bold
+                            ),
                             color = MaterialTheme.colorScheme.onSurface
                         )
                         Text(
                             text = stringResource(category.description),
-                            style = MaterialTheme.typography.bodyMedium,
+                            style = MaterialTheme.typography.bodyMedium.copy(
+                                fontFamily = AlbionFont,
+                                fontWeight = FontWeight.Normal
+                            ),
                             color = MaterialTheme.colorScheme.onSurfaceVariant,
                             modifier = Modifier.padding(top = 6.dp)
                         )

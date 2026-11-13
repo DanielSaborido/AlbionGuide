@@ -19,6 +19,8 @@ import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.DarkMode
+import androidx.compose.material.icons.filled.LightMode
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -29,8 +31,10 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
@@ -41,6 +45,7 @@ import androidx.navigation.navArgument
 import com.example.albionguide.ui.screens.ActivityScreen
 import com.example.albionguide.ui.screens.CategoryScreen
 import com.example.albionguide.ui.screens.StartScreen
+import com.example.albionguide.ui.theme.AlbionFont
 
 // TODO: Screen enum
 enum class AlbionGuideScreen(
@@ -70,13 +75,21 @@ enum class AlbionGuideScreen(
 @Composable
 fun AlbionGuideAppBar(
     currentScreen: AlbionGuideScreen,
+    isDarkTheme: Boolean,
+    onThemeToggle: () -> Unit,
     canNavigateBack: Boolean,
     navigateUp: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     TopAppBar(
         title = {
-            Text(stringResource(id = currentScreen.title))
+            Text(
+                text =stringResource(id = currentScreen.title),
+                style = MaterialTheme.typography.displayLarge.copy(
+                    fontFamily = AlbionFont,
+                    fontWeight = FontWeight.ExtraBold
+                ),
+            )
         },
         colors = TopAppBarDefaults.mediumTopAppBarColors(
             containerColor = MaterialTheme.colorScheme.primaryContainer
@@ -93,6 +106,16 @@ fun AlbionGuideAppBar(
             }
         }
     )
+    IconButton(
+        onClick = onThemeToggle,
+        modifier = Modifier.align(Alignment.CenterEnd)
+    ) {
+        Icon(
+            imageVector = if (isDarkTheme) Icons.Default.LightMode else Icons.Default.DarkMode,
+            contentDescription = if (isDarkTheme) "Switch to Light Mode" else "Switch to Dark Mode",
+            tint = MaterialTheme.colorScheme.onPrimary
+        )
+    }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
