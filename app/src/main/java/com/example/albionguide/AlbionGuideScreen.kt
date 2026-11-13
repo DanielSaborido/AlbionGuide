@@ -17,6 +17,7 @@ package com.example.albionguide
 
 import android.app.Activity
 import androidx.annotation.StringRes
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
@@ -116,6 +117,7 @@ private fun AlbionGuideContent(
     ) + com.example.albionguide.datasource.DataSource.mainCategories.indices.map { it }
 
     Scaffold(
+        contentWindowInsets = WindowInsets.safeDrawing,
         topBar = {
             AlbionGuideAppBar(
                 currentScreen = currentScreen,
@@ -227,11 +229,10 @@ private fun navigateToItem(
     }
 
     navController.navigate(route) {
-        popUpTo(navController.graph.startDestinationId) {
-            saveState = true
+        popUpTo(AlbionGuideScreen.Start.route) {
+            inclusive = false
         }
         launchSingleTop = true
-        restoreState = true
     }
 }
 
@@ -302,42 +303,63 @@ private fun MobileNavigationBar(
     isHomeSelected: Boolean,
     onItemSelected: (Int?) -> Unit
 ) {
-    NavigationBar {
+    Surface(
+        modifier = Modifier
+            .fillMaxWidth()
+            .navigationBarsPadding(),
+        color = MaterialTheme.colorScheme.surface,
+        tonalElevation = 3.dp
+    ) {
         Row(
-            modifier = Modifier.horizontalScroll(rememberScrollState())
+            modifier = Modifier
+                .fillMaxWidth()
+                .horizontalScroll(rememberScrollState())
+                .padding(vertical = 6.dp)
         ) {
             items.forEach { index ->
-                NavigationBarItem(
-                    selected = if (index == null) {
-                        isHomeSelected
-                    } else {
-                        selectedCategoryIndex == index
-                    },
-                    onClick = { onItemSelected(index) },
-                    icon = {
-                        Icon(
-                            imageVector = if (index == null)
-                                Icons.Default.Home
-                            else
-                                Icons.Default.Category,
-                            contentDescription = null
-                        )
-                    },
-                    label = {
-                        Text(
-                            text = if (index == null)
-                                "Home"
-                            else
-                                stringResource(
-                                    com.example.albionguide.datasource.DataSource
-                                        .mainCategories[index].name
-                                ),
-                            maxLines = 1
-                        )
-                    },
-                    alwaysShowLabel = true,
-                    modifier = Modifier.width(88.dp)
-                )
+                val selected = if (index == null) {
+                    isHomeSelected
+                } else {
+                    selectedCategoryIndex == index
+                }
+                Column(
+                    modifier = Modifier
+                        .width(88.dp)
+                        .clickable {
+                            onItemSelected(index)
+                        }
+                        .padding(vertical = 6.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Icon(
+                        imageVector = if (index == null)
+                            Icons.Default.Home
+                        else
+                            Icons.Default.Category,
+                        contentDescription = null,
+                        tint = if (selected)
+                            MaterialTheme.colorScheme.primary
+                        else
+                            MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                    Spacer(modifier = Modifier.height(4.dp))
+                    Text(
+                        text = if (index == null) {
+                            "Home"
+                        } else {
+                            stringResource(
+                                com.example.albionguide.datasource.DataSource
+                                    .mainCategories[index].name
+                            )
+                        },
+                        maxLines = 1,
+                        style = MaterialTheme.typography.labelSmall,
+                        color = if (selected)
+                            MaterialTheme.colorScheme.primary
+                        else
+                            MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                }
             }
         }
     }
@@ -351,42 +373,64 @@ private fun TabletNavigationRail(
     isHomeSelected: Boolean,
     onItemSelected: (Int?) -> Unit
 ) {
-    NavigationRail {
+    Surface(
+        modifier = Modifier
+            .fillMaxHeight()
+            .width(100.dp),
+        color = MaterialTheme.colorScheme.surface,
+        tonalElevation = 3.dp
+    ) {
         Column(
-            modifier = Modifier.verticalScroll(rememberScrollState()),
+            modifier = Modifier
+                .fillMaxSize()
+                .verticalScroll(rememberScrollState())
+                .padding(vertical = 8.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             items.forEach { index ->
-                NavigationRailItem(
-                    selected = if (index == null) {
-                        isHomeSelected
-                    } else {
-                        selectedCategoryIndex == index
-                    },
-                    onClick = { onItemSelected(index) },
-                    icon = {
-                        Icon(
-                            imageVector = if (index == null)
-                                Icons.Default.Home
-                            else
-                                Icons.Default.Category,
-                            contentDescription = null
-                        )
-                    },
-                    label = {
-                        Text(
-                            text = if (index == null)
-                                "Home"
-                            else
-                                stringResource(
-                                    com.example.albionguide.datasource.DataSource
-                                        .mainCategories[index].name
-                                ),
-                            maxLines = 2
-                        )
-                    },
-                    alwaysShowLabel = true
-                )
+                val selected = if (index == null) {
+                    isHomeSelected
+                } else {
+                    selectedCategoryIndex == index
+                }
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clickable {
+                            onItemSelected(index)
+                        }
+                        .padding(vertical = 12.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Icon(
+                        imageVector = if (index == null)
+                            Icons.Default.Home
+                        else
+                            Icons.Default.Category,
+                        contentDescription = null,
+                        tint = if (selected)
+                            MaterialTheme.colorScheme.primary
+                        else
+                            MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                    Spacer(modifier = Modifier.height(4.dp))
+                    Text(
+                        text = if (index == null) {
+                            "Home"
+                        } else {
+                            stringResource(
+                                com.example.albionguide.datasource.DataSource
+                                    .mainCategories[index].name
+                            )
+                        },
+                        maxLines = 2,
+                        style = MaterialTheme.typography.labelSmall,
+                        color = if (selected)
+                            MaterialTheme.colorScheme.primary
+                        else
+                            MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                }
             }
         }
     }
