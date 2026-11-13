@@ -9,11 +9,16 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -28,6 +33,11 @@ fun CategoryScreen(
     modifier: Modifier = Modifier
 ) {
     val category = DataSource.mainCategories.getOrNull(categoryIndex)
+
+    var expandedIndex by rememberSaveable {
+        mutableIntStateOf(-1)
+    }
+
     if (category == null) {
         Column(
             modifier = modifier
@@ -56,27 +66,27 @@ fun CategoryScreen(
                     bottom = 8.dp
                 )
             )
+
             Text(
                 text = stringResource(category.description),
                 style = MaterialTheme.typography.bodyMedium.copy(
-                    fontFamily = AlbionFont,
-                    fontWeight = FontWeight.Normal
+                    fontFamily = AlbionFont
                 ),
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                 modifier = Modifier.padding(bottom = 16.dp)
             )
+
             LazyColumn(
                 modifier = Modifier.fillMaxSize(),
                 contentPadding = PaddingValues(bottom = 16.dp),
                 verticalArrangement = Arrangement.spacedBy(12.dp)
             ) {
                 itemsIndexed(category.subcategories) { index, subcategory ->
+
+                    val isExpanded = expandedIndex == index
+
                     Card(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .clickable {
-                                onSubcategoryClicked(index)
-                            },
+                        modifier = Modifier.fillMaxWidth(),
                         elevation = CardDefaults.cardElevation(
                             defaultElevation = 2.dp
                         ),
@@ -85,7 +95,13 @@ fun CategoryScreen(
                         )
                     ) {
                         Column(
-                            modifier = Modifier.padding(16.dp)
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .clickable {
+                                    expandedIndex =
+                                        if (isExpanded) -1 else index
+                                }
+                                .padding(16.dp)
                         ) {
                             Text(
                                 text = stringResource(subcategory.name),
@@ -95,15 +111,28 @@ fun CategoryScreen(
                                 ),
                                 color = MaterialTheme.colorScheme.onSurface
                             )
-                            Text(
-                                text = stringResource(subcategory.description),
-                                style = MaterialTheme.typography.bodyMedium.copy(
-                                    fontFamily = AlbionFont,
-                                    fontWeight = FontWeight.Normal
-                                ),
-                                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                                modifier = Modifier.padding(top = 6.dp)
-                            )
+
+                            if (isExpanded) {
+                                Text(
+                                    text = stringResource(subcategory.description),
+                                    style = MaterialTheme.typography.bodyMedium.copy(
+                                        fontFamily = AlbionFont
+                                    ),
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                    modifier = Modifier.padding(top = 8.dp)
+                                )
+
+                                Button(
+                                    onClick = {
+                                        onSubcategoryClicked(index)
+                                    },
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .padding(top = 12.dp)
+                                ) {
+                                    Text("Open guide")
+                                }
+                            }
                         }
                     }
                 }
