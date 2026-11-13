@@ -115,6 +115,14 @@ private fun AlbionGuideContent(
     val navigationItems = listOf(
         null
     ) + com.example.albionguide.datasource.DataSource.mainCategories.indices.map { it }
+    // Tablet selection state
+    var tabletCategoryIndex by rememberSaveable {
+        mutableStateOf<Int?>(null)
+    }
+
+    var tabletSubcategoryIndex by rememberSaveable {
+        mutableStateOf<Int?>(null)
+    }
 
     Scaffold(
         contentWindowInsets = WindowInsets.safeDrawing,
@@ -140,77 +148,134 @@ private fun AlbionGuideContent(
             }
         }
     ) { innerPadding ->
-
         Row(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(innerPadding)
         ) {
-            if (!isCompact) {
+            if (isCompact) {
+                NavHost(
+                    navController = navController,
+                    startDestination = AlbionGuideScreen.Start.route,
+                    modifier = Modifier.weight(1f)
+                ) {
+                    composable(AlbionGuideScreen.Start.route) {
+                        StartScreen(
+                            onCategoryClicked = { index ->
+                                navController.navigate("Category/$index")
+                            }
+                        )
+                    }
+                    composable(
+                        route = AlbionGuideScreen.Category.route,
+                        arguments = listOf(
+                            navArgument("categoryIndex") {
+                                type = NavType.IntType
+                            }
+                        )
+                    ) { entry ->
+                        val index =
+                            entry.arguments?.getInt("categoryIndex") ?: 0
+                        CategoryScreen(
+                            categoryIndex = index,
+                            onSubcategoryClicked = { subcategoryIndex ->
+                                navController.navigate(
+                                    "Activity/$index/$subcategoryIndex"
+                                )
+                            }
+                        )
+                    }
+                    composable(
+                        route = AlbionGuideScreen.Activity.route,
+                        arguments = listOf(
+                            navArgument("categoryIndex") {
+                                type = NavType.IntType
+                            },
+                            navArgument("subcategoryIndex") {
+                                type = NavType.IntType
+                            }
+                        )
+                    ) { entry ->
+                        val index =
+                            entry.arguments?.getInt("categoryIndex") ?: 0
+                        val subcategoryIndex =
+                            entry.arguments?.getInt("subcategoryIndex") ?: 0
+                        ActivityScreen(
+                            categoryIndex = index,
+                            subcategoryIndex = subcategoryIndex
+                        )
+                    }
+                }
+            } else {
+                // 1. Main category navigation
                 TabletNavigationRail(
                     items = navigationItems,
-                    selectedCategoryIndex = categoryIndex,
-                    isHomeSelected = currentRoute == AlbionGuideScreen.Start.route,
+                    selectedCategoryIndex = tabletCategoryIndex,
+                    isHomeSelected = tabletCategoryIndex == null,
                     onItemSelected = { index ->
-                        navigateToItem(navController, index)
+                        tabletCategoryIndex = index
+                        tabletSubcategoryIndex =
+                            if (index != null &&
+                                com.example.albionguide.datasource.DataSource
+                                    .mainCategories[index].subcategories.isNotEmpty()
+                            ) {
+                                0
+                            } else {
+                                null
+                            }
                     }
                 )
-            }
-
-            NavHost(
-                navController = navController,
-                startDestination = AlbionGuideScreen.Start.route,
-                modifier = Modifier.weight(1f)
-            ) {
-                composable(AlbionGuideScreen.Start.route) {
-                    StartScreen(
-                        onCategoryClicked = { index ->
-                            navController.navigate("Category/$index")
-                        }
-                    )
-                }
-
-                composable(
-                    route = AlbionGuideScreen.Category.route,
-                    arguments = listOf(
-                        navArgument("categoryIndex") {
-                            type = NavType.IntType
-                        }
-                    )
-                ) { entry ->
-                    val index =
-                        entry.arguments?.getInt("categoryIndex") ?: 0
-
+                Spacer(modifier = Modifier.width(12.dp))
+                // 2. Selected category and its subcategories
+                if (tabletCategoryIndex != null) {
                     CategoryScreen(
-                        categoryIndex = index,
-                        onSubcategoryClicked = { subcategoryIndex ->
-                            navController.navigate(
-                                "Activity/$index/$subcategoryIndex"
-                            )
-                        }
-                    )
-                }
-
-                composable(
-                    route = AlbionGuideScreen.Activity.route,
-                    arguments = listOf(
-                        navArgument("categoryIndex") {
-                            type = NavType.IntType
+                        categoryIndex = tabletCategoryIndex!!,
+                        onSubcategoryClicked = { index ->
+                            tabletSubcategoryIndex = index
                         },
-                        navArgument("subcategoryIndex") {
-                            type = NavType.IntType
-                        }
+                        modifier = Modifier
+                            .weight(0.9f)
+                            .fillMaxHeight()
                     )
-                ) { entry ->
-                    val index =
-                        entry.arguments?.getInt("categoryIndex") ?: 0
-                    val subcategoryIndex =
-                        entry.arguments?.getInt("subcategoryIndex") ?: 0
-
+                } else {
+                    Box(
+                        modifier = Modifier
+                            .weight(0.9f)
+                            .fillMaxHeight(),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text(
+                            text = "Select a category",
+                            style = MaterialTheme.typography.titleMedium,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                    }
+                }
+                Spacer(modifier = Modifier.width(12.dp))
+                // 3. Selected activity details
+                if (tabletCategoryIndex != null &&
+                    tabletSubcategoryIndex != null
+                ) {
                     ActivityScreen(
-                        categoryIndex = index,
-                        subcategoryIndex = subcategoryIndex
+                        categoryIndex = tabletCategoryIndex!!,
+                        subcategoryIndex = tabletSubcategoryIndex!!,
+                        modifier = Modifier
+                            .weight(1.4f)
+                            .fillMaxHeight()
                     )
+                } else {
+                    Box(
+                        modifier = Modifier
+                            .weight(1.4f)
+                            .fillMaxHeight(),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text(
+                            text = "Select an activity",
+                            style = MaterialTheme.typography.titleMedium,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                    }
                 }
             }
         }
@@ -247,10 +312,6 @@ private fun AlbionGuideAppBar(
     navigateUp: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    var themeMenuExpanded by remember {
-        mutableStateOf(false)
-    }
-
     TopAppBar(
         title = {
             Text(
