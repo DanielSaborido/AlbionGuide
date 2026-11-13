@@ -1,130 +1,214 @@
+
 <resources>
-    <!-- APP -->
-    <string name="app_name">Albion Guide</string>
-    <string name="app_description">Your guide to the world of Albion Online</string>
-
-    <!-- MAIN SCREEN -->
-    <string name="home_title">Albion Online Guide</string>
-    <string name="home_subtitle">Explore activities, learn new strategies and discover everything Albion has to offer.</string>
-    <string name="categories_title">Main Categories</string>
-
-    <!-- CATEGORY 1: GATHERING -->
-    <string name="category_gathering">Gathering</string>
-    <string name="category_gathering_desc">Discover how to collect resources, improve your gathering skills and make silver through the world of Albion.</string>
-
-    <string name="gathering_basics">Gathering Basics</string>
-    <string name="gathering_basics_desc">Learn how gathering works, how to use tools and how to collect resources efficiently.</string>
-    <string name="gathering_tips">Gathering Tips</string>
-    <string name="gathering_tips_desc">Learn how to choose gathering zones, manage your inventory and avoid unnecessary risks.</string>
-    <string name="gathering_specialization">Gathering Specialization</string>
-    <string name="gathering_specialization_desc">Understand gathering fame, progression and specialization for each resource.</string>
-    <string name="gathering_danger_zones">Danger Zones</string>
-    <string name="gathering_danger_zones_desc">Understand the risks of gathering in blue, yellow, red and black zones.</string>
-
-    <!-- CATEGORY 2: CRAFTING AND REFINING -->
-    <string name="category_crafting">Crafting &amp; Refining</string>
-    <string name="category_crafting_desc">Learn how to transform raw resources into materials, equipment and valuable items.</string>
-
-    <string name="crafting_basics">Crafting Basics</string>
-    <string name="crafting_basics_desc">Learn how crafting stations work and how to create weapons, armor and other items.</string>
-    <string name="crafting_refining">Resource Refining</string>
-    <string name="crafting_refining_desc">Discover how to refine raw resources into usable materials.</string>
-    <string name="crafting_focus">Focus Points</string>
-    <string name="crafting_focus_desc">Understand how to use focus points to improve your crafting and refining profits.</string>
-    <string name="crafting_specialization">Crafting Specialization</string>
-    <string name="crafting_specialization_desc">Learn how crafting fame and specialization improve your production.</string>
-
-    <!-- CATEGORY 3: PVE AND MOBS -->
-    <string name="category_pve">PvE &amp; Mobs</string>
-    <string name="category_pve_desc">Explore combat against creatures, dungeons, bosses and other PvE challenges.</string>
-
-    <string name="pve_open_world">Open World Mobs</string>
-    <string name="pve_open_world_desc">Learn how to fight open-world creatures and earn fame, loot and silver.</string>
-    <string name="pve_solo_dungeons">Solo Dungeons</string>
-    <string name="pve_solo_dungeons_desc">Discover how to complete solo dungeons, defeat bosses and improve your PvE efficiency.</string>
-    <string name="pve_group_dungeons">Group Dungeons</string>
-    <string name="pve_group_dungeons_desc">Learn about group dungeon roles, team composition and cooperation.</string>
-    <string name="pve_avalonian">Avalonian Content</string>
-    <string name="pve_avalonian_desc">Explore challenging Avalonian activities and learn about their rewards.</string>
-    <string name="pve_hellgates">Hellgates</string>
-    <string name="pve_hellgates_desc">Understand Hellgate mechanics, team composition and combat strategies.</string>
-
-    <!-- CATEGORY 4: SOLO PVP -->
-    <string name="category_solo_pvp">Solo PvP</string>
-    <string name="category_solo_pvp_desc">Learn how to fight other players alone and improve your individual combat skills.</string>
-
-    <string name="solo_pvp_open_world">Open World PvP</string>
-    <string name="solo_pvp_open_world_desc">Learn how to find fights, engage enemies and survive encounters in dangerous zones.</string>
-    <string name="solo_pvp_corrupted">Corrupted Dungeons</string>
-    <string name="solo_pvp_corrupted_desc">Discover how to fight in corrupted dungeons and improve your one-versus-one skills.</string>
-    <string name="solo_pvp_builds">Solo PvP Builds</string>
-    <string name="solo_pvp_builds_desc">Explore weapon combinations, armor choices and abilities for solo combat.</string>
-    <string name="solo_pvp_tips">Solo PvP Tips</string>
-    <string name="solo_pvp_tips_desc">Learn about positioning, cooldown management, matchups and decision-making.</string>
-
-    <!-- CATEGORY 5: GROUP PVP -->
-    <string name="category_group_pvp">Group PvP</string>
-    <string name="category_group_pvp_desc">Discover group combat, team coordination and small-scale PvP activities.</string>
-
-    <string name="group_pvp_small_scale">Small Scale PvP</string>
-    <string name="group_pvp_small_scale_desc">Learn how small groups fight, coordinate abilities and control engagements.</string>
-    <string name="group_pvp_ganking">Ganking</string>
-    <string name="group_pvp_ganking_desc">Understand how groups hunt players, organize ambushes and control escape routes.</string>
-    <string name="group_pvp_hellgates">Group Hellgates</string>
-    <string name="group_pvp_hellgates_desc">Learn how to coordinate a team and compete in group Hellgates.</string>
-    <string name="group_pvp_builds">Group PvP Builds</string>
-    <string name="group_pvp_builds_desc">Discover common group roles, builds and equipment combinations.</string>
-
-    <!-- CATEGORY 6: CAMPS AND OUTPOSTS -->
-    <string name="category_camps">Camps &amp; Outposts</string>
-    <string name="category_camps_desc">Learn about open-world objectives, camps, outposts and their rewards.</string>
-
-    <string name="camps_open_world">Open World Camps</string>
-    <string name="camps_open_world_desc">Discover camps, their enemies, rewards and strategies for completing them.</string>
-    <string name="camps_outposts">Outposts</string>
-    <string name="camps_outposts_desc">Learn how to capture and defend outposts while competing against other players.</string>
-    <string name="camps_objectives">World Objectives</string>
-    <string name="camps_objectives_desc">Understand different open-world objectives and how to participate in them.</string>
-
-    <!-- CATEGORY 7: WARS AND TERRITORY -->
-    <string name="category_wars">Wars &amp; Territory</string>
-    <string name="category_wars_desc">Explore large-scale PvP, guild activities, territory control and faction warfare.</string>
-
-    <string name="wars_guild">Guild Warfare</string>
-    <string name="wars_guild_desc">Learn about guild organization, combat preparation and large-scale battles.</string>
-    <string name="wars_territories">Territory Control</string>
-    <string name="wars_territories_desc">Understand how guilds compete for territories and control valuable locations.</string>
-    <string name="wars_castles">Castles &amp; Castle Outposts</string>
-    <string name="wars_castles_desc">Discover castle objectives, their rewards and strategies for capturing them.</string>
-    <string name="wars_faction">Faction Warfare</string>
-    <string name="wars_faction_desc">Learn how to join a faction, capture zones and participate in faction battles.</string>
-    <string name="wars_crystal">Crystal League</string>
-    <string name="wars_crystal_desc">Understand organized competitive team battles and their mechanics.</string>
-
-    <!-- CATEGORY 8: ECONOMY AND TRADING -->
-    <string name="category_economy">Economy &amp; Trading</string>
-    <string name="category_economy_desc">Learn how to make silver, trade items and manage your resources.</string>
-
-    <string name="economy_market">Marketplace</string>
-    <string name="economy_market_desc">Learn how to buy and sell items, understand market prices and find profitable opportunities.</string>
-    <string name="economy_transport">Transporting</string>
-    <string name="economy_transport_desc">Discover how to move goods between cities while managing the risks of transporting.</string>
-    <string name="economy_islands">Personal Islands</string>
-    <string name="economy_islands_desc">Learn about island management, farming, laborers and passive income opportunities.</string>
-    <string name="economy_silver">Making Silver</string>
-    <string name="economy_silver_desc">Explore different methods of earning silver through PvE, PvP, gathering and trading.</string>
-
-    <!-- ACTIVITY DETAILS -->
+    <!-- APP AND NAVIGATION -->
+    <string name="app_name">Albion Online Guide</string>
+    <string name="categories_title">Categories</string>
     <string name="activity_description">Description</string>
     <string name="activity_how_it_works">How It Works</string>
     <string name="activity_requirements">Requirements</string>
-    <string name="activity_tips">Tips &amp; Tricks</string>
+    <string name="activity_tips">Tips &amp; Recommendations</string>
     <string name="activity_rewards">Rewards</string>
     <string name="activity_difficulty">Difficulty</string>
     <string name="activity_recommended_build">Recommended Build</string>
-
-    <!-- NAVIGATION -->
     <string name="navigation_home">Home</string>
     <string name="navigation_back">Back</string>
     <string name="navigation_search">Search</string>
+
+    <!-- MAIN CATEGORIES -->
+    <string name="category_gathering">Gathering</string>
+    <string name="category_gathering_desc">Collect raw resources throughout the world of Albion, develop gathering skills and turn resources into valuable materials.</string>
+
+    <string name="category_crafting">Crafting &amp; Refining</string>
+    <string name="category_crafting_desc">Turn raw materials into refined resources, equipment and useful items. Learn how to improve production and make silver.</string>
+
+    <string name="category_pve">PvE &amp; Mobs</string>
+    <string name="category_pve_desc">Fight creatures, clear dungeons and defeat powerful enemies to earn fame, silver and loot.</string>
+
+    <string name="category_solo_pvp">Solo PvP</string>
+    <string name="category_solo_pvp_desc">Learn how to fight other players alone, choose effective builds and survive dangerous encounters.</string>
+
+    <string name="category_group_pvp">Group PvP</string>
+    <string name="category_group_pvp_desc">Coordinate with other players in small-scale fights, ganking groups and organised team battles.</string>
+
+    <string name="category_camps">Camps &amp; Outposts</string>
+    <string name="category_camps_desc">Explore open-world camps, capture objectives and compete for valuable locations and rewards.</string>
+
+    <string name="category_wars">Wars &amp; Territory</string>
+    <string name="category_wars_desc">Discover guild warfare, territory control, castles, faction warfare and organised competitive activities.</string>
+
+    <string name="category_economy">Economy &amp; Trading</string>
+    <string name="category_economy_desc">Learn how Albion\'s economy works through trading, transporting goods, managing islands and earning silver.</string>
+
+    <!-- GATHERING -->
+    <string name="gathering_basics">Gathering Basics</string>
+    <string name="gathering_basics_desc">Learn the fundamentals of collecting wood, ore, fiber, hide and stone.</string>
+    <string name="gathering_basics_how">Gather resources from resource nodes found throughout Albion. Each resource type requires its matching gathering tool: an axe for wood, a pickaxe for ore, a sickle for fiber, a skinning knife for hide and a stone hammer for stone. Higher-tier resources require higher-tier gathering levels and tools. Gathering resources grants fame toward the relevant gathering profession.</string>
+    <string name="gathering_basics_tips">Start in safe zones while learning the resource locations and tool requirements. Upgrade your tools as your gathering level increases. Use a mount to carry resources, watch your carry weight and return to a city before you become overloaded. Consider gathering resources that are in demand on the marketplace.</string>
+
+    <string name="gathering_tips">Gathering Tips</string>
+    <string name="gathering_tips_desc">Improve gathering efficiency with the right equipment, food, routes and preparation.</string>
+    <string name="gathering_tips_how">Gathering efficiency depends on your gathering level, equipment, food and the resource nodes available in each zone. Gathering gear provides bonuses related to a particular resource. Food such as Pork Pie can increase gathering yield, while gathering tools determine which resource tiers you can collect.</string>
+    <string name="gathering_tips_tips">Wear gathering equipment for the resource you intend to collect. Plan a route through areas with several resource nodes and avoid spending too much time travelling between them. Keep an eye on your inventory weight and market prices. Do not risk expensive equipment when gathering in dangerous areas unless you can afford to replace it.</string>
+
+    <string name="gathering_specialization">Gathering Specialization</string>
+    <string name="gathering_specialization_desc">Understand gathering fame, profession levels and specialization progression.</string>
+    <string name="gathering_specialization_how">Each gathering profession has its own progression. Gathering a resource grants fame toward that profession and unlocks access to higher resource tiers as you advance. Further specialization improves your efficiency in that resource profession and can increase your gathering yield.</string>
+    <string name="gathering_specialization_tips">Focus on the resource types you actually want to gather instead of spreading your progress across every profession. Higher specialization is especially useful when gathering regularly. Check the Destiny Board to understand the requirements for the next level and plan your gathering around your goals.</string>
+
+    <string name="gathering_danger_zones">Dangerous Zones</string>
+    <string name="gathering_danger_zones_desc">Learn how to gather in Red and Black Zones while managing the risk of PvP.</string>
+    <string name="gathering_danger_zones_how">Red and Black Zones contain full-loot PvP risks. Other players can attack you, and being killed in these areas can result in losing the equipment and resources you are carrying. These zones can also contain more valuable and higher-tier resources. Red Zones show hostile player information, while Black Zones are especially dangerous because players can attack without the same hostile-flag warning system.</string>
+    <string name="gathering_danger_zones_tips">Use an inexpensive gathering set and a mount suited to your load. Watch the local player indicators in Red Zones and check your surroundings frequently. In Black Zones, avoid predictable routes and crowded areas. Keep escape abilities available, do not overfill your inventory and never carry more value than you are prepared to lose.</string>
+
+    <!-- CRAFTING AND REFINING -->
+    <string name="crafting_basics">Crafting Basics</string>
+    <string name="crafting_basics_desc">Learn how to craft weapons, armor, tools, consumables and other items.</string>
+    <string name="crafting_basics_how">Crafting turns resources and refined materials into finished items. Visit the appropriate crafting station, select an item, provide the required materials and pay the crafting fee. Crafting grants fame toward the relevant crafting specialization. Some crafting stations are found in cities, while others can be built on personal or guild islands.</string>
+    <string name="crafting_basics_tips">Check the marketplace price of an item before crafting it. Include material costs, station fees, marketplace taxes and transport costs when calculating profit. Compare city crafting bonuses before choosing a station. Start with a small number of item types so you can develop useful crafting specialization.</string>
+
+    <string name="crafting_refining">Refining</string>
+    <string name="crafting_refining_desc">Convert raw resources into refined materials such as bars, planks, cloth and leather.</string>
+    <string name="crafting_refining_how">Refining transforms gathered resources into materials used for crafting. For example, ore becomes metal bars, logs become planks, fiber becomes cloth and hide becomes leather. Each material requires the appropriate refining station, resources and a silver fee. Refining also grants fame toward its corresponding specialization.</string>
+    <string name="crafting_refining_tips">Compare refining fees between cities before processing large quantities. Cities have different refining bonuses for particular resources, which can improve resource return rates. Check the price of raw and refined materials before deciding whether to refine or sell them directly.</string>
+
+    <string name="crafting_focus">Focus Points</string>
+    <string name="crafting_focus_desc">Understand Focus Points and how they improve crafting and refining efficiency.</string>
+    <string name="crafting_focus_how">Focus Points regenerate over time and can be spent on eligible crafting and refining activities. Using focus improves resource return rates, meaning some materials can be returned instead of consumed. Your specialization affects how efficiently you use focus, so higher specialization can make each focus point more valuable.</string>
+    <string name="crafting_focus_tips">Avoid spending focus without checking the value of the materials you expect to recover. Compare the cost of materials with the value of the returned resources. Focus is limited, so prioritise activities where it creates the greatest economic benefit. Remember that focus efficiency improves as your relevant specialization increases.</string>
+
+    <string name="crafting_specialization">Crafting Specialization</string>
+    <string name="crafting_specialization_desc">Develop specific crafting professions to improve production efficiency and focus usage.</string>
+    <string name="crafting_specialization_how">Crafting items grants fame toward their associated crafting lines. As you gain fame, you unlock higher specialization levels. Specialization improves your ability to craft that item line and can increase resource return efficiency when using focus.</string>
+    <string name="crafting_specialization_tips">Concentrate on a few item lines that have consistent demand. Check the Destiny Board to see which specializations support your goals. Avoid crafting items at a loss just to gain fame unless you have calculated the cost and consider the progression worthwhile.</string>
+
+    <!-- PVE AND MOBS -->
+    <string name="pve_open_world">Open World PvE</string>
+    <string name="pve_open_world_desc">Defeat open-world creatures and mobs to earn fame, silver and loot.</string>
+    <string name="pve_open_world_how">Open-world mobs are found throughout Albion\'s maps. Defeating them grants combat fame and can provide silver, loot and other rewards. Different zones contain different enemy types and difficulty levels. Some areas also have enchanted mobs or special encounters that can offer better rewards.</string>
+    <string name="pve_open_world_tips">Choose enemies that match your equipment and experience. Use a build with a balance of damage and sustain so you can keep farming without returning to town too often. Watch for other players, especially in Red and Black Zones, and avoid fighting mobs when you are already low on health.</string>
+
+    <string name="pve_solo_dungeons">Solo Dungeons</string>
+    <string name="pve_solo_dungeons_desc">Explore solo dungeons, defeat their enemies and collect the rewards at the end.</string>
+    <string name="pve_solo_dungeons_how">Solo dungeons contain groups of PvE enemies and a final boss. Enter the dungeon, clear its rooms and defeat the boss to receive loot and fame. Dungeon entrances can appear in different zones, and the risk depends on the zone where the dungeon is located.</string>
+    <string name="pve_solo_dungeons_tips">Bring enough damage and healing to handle the boss. Learn enemy attack patterns and save defensive abilities for dangerous attacks. Use an affordable build when entering full-loot zones. Be aware that other players may find or enter your dungeon before its entrance disappears.</string>
+
+    <string name="pve_group_dungeons">Group Dungeons</string>
+    <string name="pve_group_dungeons_desc">Work with a party to clear challenging PvE dungeons and defeat powerful bosses.</string>
+    <string name="pve_group_dungeons_how">Group dungeons are designed for parties and usually require players to work together in different roles. A typical group includes a tank, healer and damage dealers. The group clears enemy packs and bosses while managing positioning, threat and incoming damage.</string>
+    <string name="pve_group_dungeons_tips">Agree on roles before entering. Let the tank gather and control enemies, while damage dealers follow the group\'s target priorities. Avoid standing in dangerous attacks and pay attention to the healer\'s position. Bring equipment appropriate for your role and communicate before difficult boss encounters.</string>
+
+    <string name="pve_avalonian">Avalonian Dungeons</string>
+    <string name="pve_avalonian_desc">Take on challenging Avalonian PvE encounters that require preparation and group coordination.</string>
+    <string name="pve_avalonian_how">Avalonian dungeons are challenging group PvE activities featuring powerful enemies and encounter mechanics. Players need a coordinated party with suitable roles to clear the dungeon. Successful groups must manage enemy abilities, positioning and boss mechanics rather than relying only on damage.</string>
+    <string name="pve_avalonian_tips">Prepare your group composition before entering and make sure everyone understands their role. Learn the mechanics of each encounter and communicate dangerous attacks. Bring suitable equipment and consumables, and avoid rushing into unfamiliar boss fights without understanding their mechanics.</string>
+
+    <string name="pve_hellgates">Hellgates</string>
+    <string name="pve_hellgates_desc">Fight through PvE encounters and compete against other players in Hellgate activities.</string>
+    <string name="pve_hellgates_how">Hellgates are instanced combat activities that combine PvE enemies with the possibility of PvP encounters. Players clear enemies and may encounter an opposing team. Hellgates come in different formats and group sizes, with different rules and levels of risk.</string>
+    <string name="pve_hellgates_tips">Prepare for both PvE and PvP. Choose a build with useful damage, mobility and defensive abilities. Coordinate with your teammates and communicate enemy positions and cooldowns. Understand the Hellgate format before entering so you know what to expect.</string>
+
+    <!-- SOLO PVP -->
+    <string name="solo_pvp_open_world">Open World Solo PvP</string>
+    <string name="solo_pvp_open_world_desc">Find and fight other players alone in Albion\'s open world.</string>
+    <string name="solo_pvp_open_world_how">Open-world solo PvP takes place in areas where players can attack one another. You may encounter opponents while travelling, gathering or farming fame. Fights depend on your build, positioning, equipment and ability to judge whether an engagement is favourable.</string>
+    <string name="solo_pvp_open_world_tips">Use a build with a combination of damage, mobility and survivability. Check your surroundings before engaging and avoid fighting multiple opponents alone. Learn when to use defensive abilities and when to disengage. In full-loot zones, bring equipment you can afford to replace.</string>
+
+    <string name="solo_pvp_corrupted">Corrupted Dungeons</string>
+    <string name="solo_pvp_corrupted_desc">Enter solo dungeons where PvE progression can lead to a one-versus-one PvP fight.</string>
+    <string name="solo_pvp_corrupted_how">Corrupted Dungeons combine solo PvE with solo PvP. You clear enemies, collect rewards and destroy crystals. Another player may invade your dungeon, creating a one-versus-one fight. The dungeon\'s difficulty level determines its risk and reward structure.</string>
+    <string name="solo_pvp_corrupted_tips">Learn the differences between Hunter, Stalker and Slayer difficulty before choosing where to play. Build around your preferred fighting style and learn how your abilities interact with common opponent builds. Understand the crystal objectives and decide whether to fight or defend them based on your situation.</string>
+
+    <string name="solo_pvp_builds">Solo PvP Builds</string>
+    <string name="solo_pvp_builds_desc">Learn how to choose weapons, armor and abilities for effective solo PvP.</string>
+    <string name="solo_pvp_builds_how">A solo PvP build usually includes a weapon, off-hand if applicable, headpiece, chest armor, shoes, cape, food and potion. Each piece contributes abilities and bonuses. The best combination depends on the activity, your budget and the playstyle you want to use.</string>
+    <string name="solo_pvp_builds_tips">Choose a build you can afford to replace and practise with it before risking expensive equipment. Learn your weapon\'s damage combos, defensive options and mobility. Consider how your build performs against different opponents rather than focusing only on its damage output.</string>
+
+    <string name="solo_pvp_tips">Solo PvP Tips</string>
+    <string name="solo_pvp_tips_desc">Improve decision-making, positioning and combat awareness when fighting alone.</string>
+    <string name="solo_pvp_tips_how">Solo PvP rewards players who understand their own abilities and recognise their opponent\'s strengths and weaknesses. Good positioning, cooldown management and timing can decide a fight. Knowing when not to engage is also an important part of surviving.</string>
+    <string name="solo_pvp_tips_tips">Inspect opponents when possible and learn to recognise common weapon abilities. Avoid wasting defensive cooldowns and look for opportunities after your opponent uses theirs. Keep an escape option available when travelling through dangerous zones. Review lost fights to understand what you could improve.</string>
+
+    <!-- GROUP PVP -->
+    <string name="group_pvp_small_scale">Small-Scale PvP</string>
+    <string name="group_pvp_small_scale_desc">Fight in coordinated small groups where positioning and teamwork are essential.</string>
+    <string name="group_pvp_small_scale_how">Small-scale PvP involves fights between relatively small groups of players. Teams combine damage, healing, crowd control and defensive abilities. Success depends on target selection, positioning and using abilities together rather than acting independently.</string>
+    <string name="group_pvp_small_scale_tips">Communicate targets and important cooldowns. Focus damage on the same opponent and protect your healer. Avoid spreading damage across several enemies without a plan. Stay close enough to support your team while avoiding enemy area attacks.</string>
+
+    <string name="group_pvp_ganking">Group Ganking</string>
+    <string name="group_pvp_ganking_desc">Hunt players in open-world zones using coordinated movement, mobility and crowd control.</string>
+    <string name="group_pvp_ganking_how">Ganking groups travel through open-world zones looking for players to catch and kill. Members use mobility, dismount pressure, crowd control and damage to prevent targets from escaping. Different players may take roles such as scout, dismount support or damage dealer.</string>
+    <string name="group_pvp_ganking_tips">Coordinate your movement and communicate target locations. Use scouts where possible and avoid chasing targets too far from your group. Make sure your group has enough crowd control to stop escapes. Watch for counter-ganks and do not become careless after finding a target.</string>
+
+    <string name="group_pvp_hellgates">Group Hellgates</string>
+    <string name="group_pvp_hellgates_desc">Compete in team-based Hellgate encounters that combine PvE and organised PvP.</string>
+    <string name="group_pvp_hellgates_how">Group Hellgates place teams into an instanced environment where they clear PvE enemies and may fight another team. Group size and rules depend on the Hellgate type. Team composition, target selection and coordinated ability use are important to success.</string>
+    <string name="group_pvp_hellgates_tips">Agree on your team composition and roles before entering. Focus the same target and communicate defensive cooldowns. Learn how your team handles enemy crowd control and burst damage. Practise together so that your group can react quickly during fights.</string>
+
+    <string name="group_pvp_builds">Group PvP Builds</string>
+    <string name="group_pvp_builds_desc">Understand group roles and how equipment choices support a coordinated team.</string>
+    <string name="group_pvp_builds_how">Group PvP builds are designed around team roles such as tank, healer, damage dealer and support. Each role contributes something different to the group. A team\'s overall composition should provide enough damage, healing, crowd control and defensive utility.</string>
+    <string name="group_pvp_builds_tips">Choose your equipment based on the group\'s strategy rather than individual preference alone. Make sure the team has the roles it needs and that players understand their responsibilities. Practise ability combinations and agree on target priorities before entering fights.</string>
+
+    <!-- CAMPS AND OUTPOSTS -->
+    <string name="camps_open_world">Open-World Camps</string>
+    <string name="camps_open_world_desc">Clear camps and enemy groups in the open world to earn fame and rewards.</string>
+    <string name="camps_open_world_how">Open-world camps contain groups of enemies and sometimes special objectives or chests. Players defeat the enemies to clear the camp and gain fame, silver and possible loot. The rewards and difficulty depend on the camp and the zone where it appears.</string>
+    <string name="camps_open_world_tips">Check the surrounding area before starting, especially in dangerous zones. Use a build that can clear enemy groups efficiently without losing too much health. Watch for other players who may contest the camp and leave if the risk becomes too high.</string>
+
+    <string name="camps_outposts">Outposts</string>
+    <string name="camps_outposts_desc">Capture and contest open-world outposts while competing with other players.</string>
+    <string name="camps_outposts_how">Outposts are capturable objectives in the open world. Players generally need to defeat defenders and remain in control of the objective to capture it. Outposts can be contested by other players, so controlling one may lead to PvP encounters.</string>
+    <string name="camps_outposts_tips">Check the area for enemy players before committing to a capture. Be ready to defend the objective and avoid becoming isolated. If the area becomes heavily contested, consider regrouping rather than repeatedly entering a fight without support.</string>
+
+    <string name="camps_objectives">Open-World Objectives</string>
+    <string name="camps_objectives_desc">Discover chests, objectives and points of interest that can reward exploration and competition.</string>
+    <string name="camps_objectives_how">Open-world maps contain different objectives, including chests, special encounters and points that players can contest. Some objectives reward players for defeating enemies, while others require capturing or controlling a location. The exact mechanics depend on the objective.</string>
+    <string name="camps_objectives_tips">Understand the objective before committing your time and equipment. Check the map and nearby activity, and be aware that other players may be approaching. Consider the potential reward against the risk of being attacked or losing your equipment.</string>
+
+    <!-- WARS AND TERRITORY -->
+    <string name="wars_guild">Guild Warfare</string>
+    <string name="wars_guild_desc">Learn how guilds organise players, coordinate battles and compete for strategic control.</string>
+    <string name="wars_guild_how">Guild warfare involves organised groups competing for strategic objectives and influence. Guilds coordinate players into roles and groups, often following instructions from a shot-caller or leader. Preparation, communication and a clear strategy are essential during large-scale battles.</string>
+    <string name="wars_guild_tips">Follow your guild\'s shot-caller and make sure you understand your role before a fight. Prepare the requested equipment and consumables in advance. Stay with your group, communicate important information and avoid using major abilities without coordination.</string>
+
+    <string name="wars_territories">Territories</string>
+    <string name="wars_territories_desc">Understand territory control and its strategic importance to guilds in the Outlands.</string>
+    <string name="wars_territories_how">Territories are strategic locations in the Outlands that guilds can control. They are important for guild presence and strategic operations. Territory control can involve organised objectives and battles, with the rules depending on the current territory warfare system.</string>
+    <string name="wars_territories_tips">Learn your guild\'s territory strategy and understand the objectives involved. Coordinate with guild members and prepare the correct equipment before participating. Follow instructions during fights and keep track of enemy movements around important locations.</string>
+
+    <string name="wars_castles">Castles</string>
+    <string name="wars_castles_desc">Explore castle objectives and learn how groups compete to capture and control them.</string>
+    <string name="wars_castles_how">Castles are large open-world objectives that groups can contest. Capturing a castle involves fighting defenders and securing its objective. Castles can attract multiple groups, making positioning and coordination important during an engagement.</string>
+    <string name="wars_castles_tips">Bring a coordinated group and follow the caller\'s instructions. Pay attention to enemy positioning and avoid entering a large fight alone. Prepare your equipment beforehand and communicate when your group needs to regroup or reposition.</string>
+
+    <string name="wars_faction">Faction Warfare</string>
+    <string name="wars_faction_desc">Enlist with a city faction, capture objectives and fight opposing factions for rewards.</string>
+    <string name="wars_faction_how">Faction Warfare allows players to enlist with a city faction and participate in fights against rival factions. Players can capture faction objectives, escort or contest activities and earn faction points. Faction activities take place in designated areas and may involve open-world PvP.</string>
+    <string name="wars_faction_tips">Choose a faction and learn where its objectives are located. Joining other faction players can make objectives easier to capture and defend. Watch for opposing faction groups and understand the risks of the zone before bringing valuable equipment.</string>
+
+    <string name="wars_crystal">Crystal League</string>
+    <string name="wars_crystal_desc">Take part in organised team PvP matches that reward coordination and competitive skill.</string>
+    <string name="wars_crystal_how">Crystal League is a structured team PvP activity in which teams compete under specific match rules. Players use coordinated builds and strategies to defeat the opposing team. Team composition, target selection and timing are important throughout a match.</string>
+    <string name="wars_crystal_tips">Practise with the same team when possible. Make sure everyone understands their role, target priorities and defensive responsibilities. Communicate cooldowns and adapt your strategy to the opposing team\'s composition.</string>
+
+    <!-- ECONOMY AND TRADING -->
+    <string name="economy_market">Marketplace</string>
+    <string name="economy_market_desc">Buy and sell items while learning how supply, demand and city prices affect the economy.</string>
+    <string name="economy_market_how">The marketplace allows players to buy and sell equipment, resources and other items. You can purchase items through existing sell orders or place buy orders. When selling, you can create a sell order or use an existing buy order. Prices vary between cities and change with player supply and demand.</string>
+    <string name="economy_market_tips">Compare buy and sell prices before making a trade. Include marketplace taxes and listing fees in your calculations. Avoid investing all your silver in one item and check whether an item sells regularly before buying large quantities. Remember that displayed prices do not guarantee that an item will sell at that price.</string>
+
+    <string name="economy_transport">Transporting Goods</string>
+    <string name="economy_transport_desc">Move items between cities to take advantage of price differences and market demand.</string>
+    <string name="economy_transport_how">Transporting involves buying items in one city and moving them to another city where they may sell for a higher price. Profit depends on the difference between market prices after fees and travel costs. The route and mount you choose affect both travel time and risk.</string>
+    <string name="economy_transport_tips">Calculate the expected profit before travelling. Include taxes, listing fees and the possibility that prices may change before you sell. Use a mount with enough carrying capacity and consider safer routes when transporting valuable goods. Avoid carrying more value than you can afford to lose.</string>
+
+    <string name="economy_islands">Personal Islands</string>
+    <string name="economy_islands_desc">Develop a personal island with buildings, farms and facilities that support your activities.</string>
+    <string name="economy_islands_how">Personal islands provide private space where players can build facilities and manage certain economic activities. Depending on the buildings and upgrades available, islands can support farming, crafting and other forms of production. Buildings and plots require silver and resources to develop.</string>
+    <string name="economy_islands_tips">Plan your island around the activities you actually intend to use. Compare the cost of buildings and upkeep with the value they provide. Farming and crafting can require regular attention, so consider whether the time and investment fit your playstyle.</string>
+
+    <string name="economy_silver">Making Silver</string>
+    <string name="economy_silver_desc">Discover different ways to earn, manage and protect your silver in Albion Online.</string>
+    <string name="economy_silver_how">Silver is Albion\'s main currency and can be earned through many activities, including PvE, gathering, crafting, refining, trading and selling items. Different methods require different levels of investment, time and risk. Your most profitable activity depends on your skills, equipment and the current market.</string>
+    <string name="economy_silver_tips">Track your income and expenses so you know whether an activity is profitable. Avoid buying equipment you cannot afford to replace, especially for full-loot activities. Compare different ways of earning silver and focus on methods that suit your experience and available time.</string>
 </resources>
