@@ -14,6 +14,10 @@
     <string name="navigation_back">Back</string>
     <string name="navigation_search">Search</string>
 
+    <!-- MAIN HOME -->
+    <string name="home_title">Explore Albion Online</string>
+    <string name="home_description">Choose an activity to discover everything Albion has to offer.</string>
+
     <!-- MAIN CATEGORIES -->
     <string name="category_gathering">Gathering</string>
     <string name="category_gathering_desc">Collect raw resources throughout the world of Albion, develop gathering skills and turn resources into valuable materials.</string>
