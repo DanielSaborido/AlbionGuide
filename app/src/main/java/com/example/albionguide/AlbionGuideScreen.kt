@@ -24,9 +24,10 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Category
 import androidx.compose.material.icons.filled.DarkMode
+import androidx.compose.material.icons.filled.Hardware
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.LightMode
 import androidx.compose.material3.*
@@ -39,8 +40,10 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
@@ -49,6 +52,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.example.albionguide.datasource.DataSource
 import com.example.albionguide.ui.screens.ActivityScreen
 import com.example.albionguide.ui.screens.CategoryScreen
 import com.example.albionguide.ui.screens.StartScreen
@@ -214,15 +218,7 @@ private fun AlbionGuideContent(
                     isHomeSelected = tabletCategoryIndex == null,
                     onItemSelected = { index ->
                         tabletCategoryIndex = index
-                        tabletSubcategoryIndex =
-                            if (index != null &&
-                                com.example.albionguide.datasource.DataSource
-                                    .mainCategories[index].subcategories.isNotEmpty()
-                            ) {
-                                0
-                            } else {
-                                null
-                            }
+                        tabletSubcategoryIndex = null
                     }
                 )
                 Spacer(modifier = Modifier.width(12.dp))
@@ -238,18 +234,11 @@ private fun AlbionGuideContent(
                             .fillMaxHeight()
                     )
                 } else {
-                    Box(
-                        modifier = Modifier
-                            .weight(0.9f)
-                            .fillMaxHeight(),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        Text(
-                            text = "Select a category",
-                            style = MaterialTheme.typography.titleMedium,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant
-                        )
-                    }
+                    StartScreen(
+                        onCategoryClicked = { index ->
+                            tabletCategoryIndex = index
+                        }
+                    )
                 }
                 Spacer(modifier = Modifier.width(12.dp))
                 // 3. Selected activity details
@@ -327,7 +316,7 @@ private fun AlbionGuideAppBar(
             if (canNavigateBack) {
                 IconButton(onClick = navigateUp) {
                     Icon(
-                        imageVector = Icons.Filled.ArrowBack,
+                        imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                         contentDescription = stringResource(R.string.navigation_back),
                         tint = MaterialTheme.colorScheme.onPrimary
                     )
@@ -392,28 +381,32 @@ private fun MobileNavigationBar(
                         .padding(vertical = 6.dp),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    Icon(
-                        imageVector = if (index == null)
-                            Icons.Default.Home
-                        else
-                            Icons.Default.Category,
-                        contentDescription = null,
-                        tint = if (selected)
-                            MaterialTheme.colorScheme.primary
-                        else
-                            MaterialTheme.colorScheme.onSurfaceVariant
-                    )
+                    if (index == null) {
+                        Icon(
+                            painter = painterResource(
+                                id = R.drawable.icon_house
+                            ),
+                            contentDescription = null
+                        )
+                    } else {
+                        Icon(
+                            painter = painterResource(
+                                id = DataSource.mainCategories[index].icon
+                            ),
+                            contentDescription = null
+                        )
+                    }
                     Spacer(modifier = Modifier.height(4.dp))
                     Text(
                         text = if (index == null) {
                             "Home"
                         } else {
                             stringResource(
-                                com.example.albionguide.datasource.DataSource
-                                    .mainCategories[index].name
+                                DataSource.mainCategories[index].name
                             )
                         },
-                        maxLines = 1,
+                        maxLines = 2,
+                        textAlign = TextAlign.Center,
                         style = MaterialTheme.typography.labelSmall,
                         color = if (selected)
                             MaterialTheme.colorScheme.primary
@@ -463,28 +456,32 @@ private fun TabletNavigationRail(
                         .padding(vertical = 12.dp),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    Icon(
-                        imageVector = if (index == null)
-                            Icons.Default.Home
-                        else
-                            Icons.Default.Category,
-                        contentDescription = null,
-                        tint = if (selected)
-                            MaterialTheme.colorScheme.primary
-                        else
-                            MaterialTheme.colorScheme.onSurfaceVariant
-                    )
+                    if (index == null) {
+                        Icon(
+                            painter = painterResource(
+                                id = R.drawable.icon_house
+                            ),
+                            contentDescription = null
+                        )
+                    } else {
+                        Icon(
+                            painter = painterResource(
+                                id = DataSource.mainCategories[index].icon
+                            ),
+                            contentDescription = null
+                        )
+                    }
                     Spacer(modifier = Modifier.height(4.dp))
                     Text(
                         text = if (index == null) {
                             "Home"
                         } else {
                             stringResource(
-                                com.example.albionguide.datasource.DataSource
-                                    .mainCategories[index].name
+                                DataSource.mainCategories[index].name
                             )
                         },
                         maxLines = 2,
+                        textAlign = TextAlign.Center,
                         style = MaterialTheme.typography.labelSmall,
                         color = if (selected)
                             MaterialTheme.colorScheme.primary

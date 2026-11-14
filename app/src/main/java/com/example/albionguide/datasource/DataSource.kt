@@ -18,25 +18,28 @@ package com.example.albionguide.datasource
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Category
+import androidx.compose.ui.graphics.vector.ImageVector
 import com.example.albionguide.R
 
 data class GuideItem(
     @StringRes val name: Int,
     @StringRes val description: Int,
     @DrawableRes val image: Int = 0,
+    @DrawableRes val icon: Int = R.drawable.icon_house,
     val subcategories: List<GuideItem> = emptyList(),
     @StringRes val howItWorks: Int = 0,
     @StringRes val tips: Int = 0
 )
 
 object DataSource {
-
     val mainCategories = listOf(
-
         // GATHERING
         GuideItem(
             name = R.string.category_gathering,
             description = R.string.category_gathering_desc,
+            icon = R.drawable.icon_gatherer,
             subcategories = listOf(
                 GuideItem(
                     name = R.string.gathering_basics,
@@ -69,6 +72,7 @@ object DataSource {
         GuideItem(
             name = R.string.category_crafting,
             description = R.string.category_crafting_desc,
+            icon = R.drawable.icon_craftsman,
             subcategories = listOf(
                 GuideItem(
                     name = R.string.crafting_basics,
@@ -101,6 +105,7 @@ object DataSource {
         GuideItem(
             name = R.string.category_pve,
             description = R.string.category_pve_desc,
+            icon = R.drawable.icon_fighter,
             subcategories = listOf(
                 GuideItem(
                     name = R.string.pve_open_world,
@@ -139,6 +144,7 @@ object DataSource {
         GuideItem(
             name = R.string.category_solo_pvp,
             description = R.string.category_solo_pvp_desc,
+            icon = R.drawable.icon_player_one,
             subcategories = listOf(
                 GuideItem(
                     name = R.string.solo_pvp_open_world,
@@ -171,6 +177,7 @@ object DataSource {
         GuideItem(
             name = R.string.category_group_pvp,
             description = R.string.category_group_pvp_desc,
+            icon = R.drawable.icon_player_three,
             subcategories = listOf(
                 GuideItem(
                     name = R.string.group_pvp_small_scale,
@@ -203,6 +210,7 @@ object DataSource {
         GuideItem(
             name = R.string.category_camps,
             description = R.string.category_camps_desc,
+            icon = R.drawable.icon_tracking,
             subcategories = listOf(
                 GuideItem(
                     name = R.string.camps_open_world,
@@ -229,6 +237,7 @@ object DataSource {
         GuideItem(
             name = R.string.category_wars,
             description = R.string.category_wars_desc,
+            icon = R.drawable.icon_surrender,
             subcategories = listOf(
                 GuideItem(
                     name = R.string.wars_guild,
@@ -267,6 +276,7 @@ object DataSource {
         GuideItem(
             name = R.string.category_economy,
             description = R.string.category_economy_desc,
+            icon = R.drawable.icon_money,
             subcategories = listOf(
                 GuideItem(
                     name = R.string.economy_market,
