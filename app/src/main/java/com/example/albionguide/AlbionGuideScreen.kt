@@ -32,6 +32,7 @@ import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.LightMode
 import androidx.compose.material3.*
 import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
+import androidx.compose.material3.windowsizeclass.WindowHeightSizeClass
 import androidx.compose.material3.windowsizeclass.WindowSizeClass
 import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
@@ -108,22 +109,24 @@ private fun AlbionGuideContent(
     onThemeToggle: () -> Unit
 ) {
     val backStackEntry by navController.currentBackStackEntryAsState()
+    val categoryNavController = rememberNavController()
+    val activityNavController = rememberNavController()
     val currentRoute = backStackEntry?.destination?.route
     val currentScreen = AlbionGuideScreen.entries.firstOrNull {
         it.route == currentRoute
     } ?: AlbionGuideScreen.Start
-    val categoryIndex =
-        backStackEntry?.arguments?.getInt("categoryIndex")
+    val categoryIndex = backStackEntry?.arguments?.getInt("categoryIndex")
     val isCompact =
-        windowSizeClass.widthSizeClass == WindowWidthSizeClass.Compact
+        windowSizeClass.widthSizeClass == WindowWidthSizeClass.Compact ||
+        windowSizeClass.heightSizeClass == WindowHeightSizeClass.Expanded
     val navigationItems = listOf(
         null
-    ) + com.example.albionguide.datasource.DataSource.mainCategories.indices.map { it }
+    ) + DataSource.mainCategories.indices.map { it }
+
     // Tablet selection state
     var tabletCategoryIndex by rememberSaveable {
         mutableStateOf<Int?>(null)
     }
-
     var tabletSubcategoryIndex by rememberSaveable {
         mutableStateOf<Int?>(null)
     }
@@ -211,59 +214,87 @@ private fun AlbionGuideContent(
                     }
                 }
             } else {
-                // 1. Main category navigation
-                TabletNavigationRail(
-                    items = navigationItems,
-                    selectedCategoryIndex = tabletCategoryIndex,
-                    isHomeSelected = tabletCategoryIndex == null,
-                    onItemSelected = { index ->
-                        tabletCategoryIndex = index
-                        tabletSubcategoryIndex = null
-                    }
-                )
-                Spacer(modifier = Modifier.width(12.dp))
-                // 2. Selected category and its subcategories
-                if (tabletCategoryIndex != null) {
-                    CategoryScreen(
-                        categoryIndex = tabletCategoryIndex!!,
-                        onSubcategoryClicked = { index ->
-                            tabletSubcategoryIndex = index
-                        },
-                        modifier = Modifier
-                            .weight(0.9f)
-                            .fillMaxHeight()
-                    )
-                } else {
-                    StartScreen(
-                        onCategoryClicked = { index ->
+                Row(
+                    modifier = Modifier.fillMaxSize()
+                ) {
+                    TabletNavigationRail(
+                        items = navigationItems,
+                        selectedCategoryIndex = tabletCategoryIndex,
+                        isHomeSelected = tabletCategoryIndex == null,
+                        onItemSelected = { index ->
                             tabletCategoryIndex = index
+                            tabletSubcategoryIndex = null
+                            if (index != null) {
+                                categoryNavController.navigate("Category/$index")
+                            } else {
+                                categoryNavController.navigate("Start")
+                            }
                         }
                     )
-                }
-                Spacer(modifier = Modifier.width(12.dp))
-                // 3. Selected activity details
-                if (tabletCategoryIndex != null &&
-                    tabletSubcategoryIndex != null
-                ) {
-                    ActivityScreen(
-                        categoryIndex = tabletCategoryIndex!!,
-                        subcategoryIndex = tabletSubcategoryIndex!!,
-                        modifier = Modifier
-                            .weight(1.4f)
-                            .fillMaxHeight()
-                    )
-                } else {
-                    Box(
-                        modifier = Modifier
-                            .weight(1.4f)
-                            .fillMaxHeight(),
-                        contentAlignment = Alignment.Center
+                    NavHost(
+                        navController = categoryNavController,
+                        startDestination = "Start",
+                        modifier = Modifier.weight(0.9f)
                     ) {
-                        Text(
-                            text = "Select an activity",
-                            style = MaterialTheme.typography.titleMedium,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant
-                        )
+                        composable("Start") {
+                            StartScreen(
+                                onCategoryClicked = { index ->
+                                    categoryNavController.navigate("Category/$index")
+                                }
+                            )
+                        }
+                        composable(
+                            route = "Category/{categoryIndex}",
+                            arguments = listOf(
+                                navArgument("categoryIndex") {
+                                    type = NavType.IntType
+                                }
+                            )
+                        ) { entry ->
+                            val index = entry.arguments?.getInt("categoryIndex") ?: 0
+                            CategoryScreen(
+                                categoryIndex = index,
+                                onSubcategoryClicked = { subcategoryIndex ->
+                                    activityNavController.navigate(
+                                        "Activity/$index/$subcategoryIndex"
+                                    )
+                                }
+                            )
+                        }
+                    }
+                    NavHost(
+                        navController = activityNavController,
+                        startDestination = "Empty",
+                        modifier = Modifier.weight(1.4f)
+                    ) {
+                        composable("Empty") {
+                            Box(
+                                modifier = Modifier.fillMaxSize(),
+                                contentAlignment = Alignment.Center
+                            ) {
+                                Text("Select an activity")
+                            }
+                        }
+                        composable(
+                            route = "Activity/{categoryIndex}/{subcategoryIndex}",
+                            arguments = listOf(
+                                navArgument("categoryIndex") {
+                                    type = NavType.IntType
+                                },
+                                navArgument("subcategoryIndex") {
+                                    type = NavType.IntType
+                                }
+                            )
+                        ) { entry ->
+                            val categoryIndex =
+                                entry.arguments?.getInt("categoryIndex") ?: 0
+                            val subcategoryIndex =
+                                entry.arguments?.getInt("subcategoryIndex") ?: 0
+                            ActivityScreen(
+                                categoryIndex = categoryIndex,
+                                subcategoryIndex = subcategoryIndex
+                            )
+                        }
                     }
                 }
             }

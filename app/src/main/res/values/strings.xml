@@ -2,7 +2,7 @@
 <resources>
     <!-- APP AND NAVIGATION -->
     <string name="app_name">Albion Online Guide</string>
-    <string name="categories_title">Categories</string>
+    <string name="categories_title">Category</string>
     <string name="activity_description">Description</string>
     <string name="activity_how_it_works">How It Works</string>
     <string name="activity_requirements">Requirements</string>
