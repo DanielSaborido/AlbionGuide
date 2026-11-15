@@ -6,15 +6,15 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:icon="@mipmap/albion_logo"
+        android:label="@string/logo_name"
+        android:roundIcon="@mipmap/albion_logo_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AlbionGuide">
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:label="@string/app_name"
+            android:label="@string/logo_name"
             android:theme="@style/Theme.AlbionGuide"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>

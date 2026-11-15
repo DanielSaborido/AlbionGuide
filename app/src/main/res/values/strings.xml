@@ -1,6 +1,7 @@
 
 <resources>
     <!-- APP AND NAVIGATION -->
+    <string name="logo_name">AlbionGuide</string>
     <string name="app_name">Albion Online Guide</string>
     <string name="categories_title">Category</string>
     <string name="activity_description">Description</string>
