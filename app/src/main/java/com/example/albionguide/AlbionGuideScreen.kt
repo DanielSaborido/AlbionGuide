@@ -17,6 +17,7 @@ package com.example.albionguide
 
 import android.app.Activity
 import androidx.annotation.StringRes
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.isSystemInDarkTheme
@@ -37,6 +38,8 @@ import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -56,6 +59,7 @@ import com.example.albionguide.ui.screens.CategoryScreen
 import com.example.albionguide.ui.screens.StartScreen
 import com.example.albionguide.ui.theme.AlbionFont
 import com.example.albionguide.ui.theme.AlbionGuideTheme
+import com.example.albionguide.ui.theme.Shapes
 
 // Screen enum
 enum class AlbionGuideScreen(
@@ -208,7 +212,25 @@ private fun AlbionGuideContent(
                                     .fillMaxHeight(),
                                 contentAlignment = Alignment.Center
                             ) {
-                                Text("Select an activity")
+                                if (DataSource.mainCategories[index].image != 0) {
+                                    Image(
+                                        painter = painterResource(DataSource.mainCategories[index].image),
+                                        contentDescription = stringResource(DataSource.mainCategories[index].name),
+                                        contentScale = ContentScale.Crop,
+                                        modifier = Modifier
+                                            .fillMaxWidth()
+                                            .fillMaxHeight()
+                                            .clip(Shapes.medium)
+                                    )
+                                } else {
+                                    Text(
+                                        text = "Select an activity",
+                                        style = MaterialTheme.typography.bodyMedium.copy(
+                                            fontFamily = AlbionFont,
+                                            fontWeight = FontWeight.Normal
+                                        )
+                                    )
+                                }
                             }
                         }
                     } else {

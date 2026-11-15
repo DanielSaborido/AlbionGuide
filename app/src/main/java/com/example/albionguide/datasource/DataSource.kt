@@ -39,6 +39,7 @@ object DataSource {
         GuideItem(
             name = R.string.category_gathering,
             description = R.string.category_gathering_desc,
+            image = R.drawable.main_gather,
             icon = R.drawable.icon_gatherer,
             subcategories = listOf(
                 GuideItem(
@@ -75,6 +76,7 @@ object DataSource {
         GuideItem(
             name = R.string.category_crafting,
             description = R.string.category_crafting_desc,
+            image = R.drawable.craft_basics,
             icon = R.drawable.icon_craftsman,
             subcategories = listOf(
                 GuideItem(
@@ -112,6 +114,7 @@ object DataSource {
         GuideItem(
             name = R.string.category_pve,
             description = R.string.category_pve_desc,
+            image = R.drawable.main_pve,
             icon = R.drawable.icon_fighter,
             subcategories = listOf(
                 GuideItem(
@@ -156,6 +159,7 @@ object DataSource {
         GuideItem(
             name = R.string.category_solo_pvp,
             description = R.string.category_solo_pvp_desc,
+            image = R.drawable.main_pvp,
             icon = R.drawable.icon_player_one,
             subcategories = listOf(
                 GuideItem(
@@ -192,6 +196,7 @@ object DataSource {
         GuideItem(
             name = R.string.category_group_pvp,
             description = R.string.category_group_pvp_desc,
+            image = R.drawable.main_group,
             icon = R.drawable.icon_player_three,
             subcategories = listOf(
                 GuideItem(
@@ -229,6 +234,7 @@ object DataSource {
         GuideItem(
             name = R.string.category_camps,
             description = R.string.category_camps_desc,
+            image = R.drawable.main_outpost,
             icon = R.drawable.icon_tracking,
             subcategories = listOf(
                 GuideItem(
@@ -259,6 +265,7 @@ object DataSource {
         GuideItem(
             name = R.string.category_wars,
             description = R.string.category_wars_desc,
+            image = R.drawable.main_war,
             icon = R.drawable.icon_surrender,
             subcategories = listOf(
                 GuideItem(
@@ -303,6 +310,7 @@ object DataSource {
         GuideItem(
             name = R.string.category_economy,
             description = R.string.category_economy_desc,
+            image = R.drawable.main_market,
             icon = R.drawable.icon_money,
             subcategories = listOf(
                 GuideItem(
