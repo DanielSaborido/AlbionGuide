@@ -455,7 +455,10 @@ private fun MobileNavigationBar(
                         },
                         maxLines = 2,
                         textAlign = TextAlign.Center,
-                        style = MaterialTheme.typography.labelSmall,
+                        style = MaterialTheme.typography.labelSmall.copy(
+                            fontFamily = AlbionFont,
+                            fontWeight = FontWeight.Normal
+                        ),
                         color = if (selected) {
                             MaterialTheme.colorScheme.primary
                         } else {
@@ -529,7 +532,10 @@ private fun TabletNavigationRail(
                         },
                         maxLines = 2,
                         textAlign = TextAlign.Center,
-                        style = MaterialTheme.typography.labelSmall,
+                        style = MaterialTheme.typography.labelSmall.copy(
+                            fontFamily = AlbionFont,
+                            fontWeight = FontWeight.Normal
+                        ),
                         color = if (selected) {
                             MaterialTheme.colorScheme.primary
                         } else {
